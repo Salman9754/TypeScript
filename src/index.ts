@@ -1,6 +1,19 @@
-let age: number = 20;
-console.log(age);
-if (age > 10) {
-  age + 10;
-  console.log(age);
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
 }
+
+function createUser(user: User): User {
+  console.log(user);
+  return user;
+}
+
+const newUser: User = {
+  id: 5,
+  name: "Salman",
+  email: "salman@email.com",
+  isActive: true,
+};
+createUser(newUser);

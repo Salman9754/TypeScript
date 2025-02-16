@@ -1,8 +1,13 @@
 "use strict";
-let age = 20;
-console.log(age);
-if (age > 10) {
-    age + 10;
-    console.log(age);
+function createUser(user) {
+    console.log(user);
+    return user;
 }
+const newUser = {
+    id: 5,
+    name: "Salman",
+    email: "salman@email.com",
+    isActive: true,
+};
+createUser(newUser);
 //# sourceMappingURL=index.js.map
