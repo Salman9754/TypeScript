@@ -180,4 +180,35 @@ console.log(studentOne.avgGrade());
 console.log(studentOne.showGrades);
 studentOne.addGrade(53);
 console.log(studentOne.showGrades);
+function handleResponse(obj) {
+    if (obj.success) {
+        console.log(`Data Recieved`);
+    }
+    else {
+        console.log(`Error getting data`);
+    }
+}
+handleResponse({ success: false, error: "Data Recieved" });
+class Animal {
+    constructor(species) {
+        this.species = species;
+    }
+    get getSpecies() {
+        return this.species;
+    }
+}
+class Dog extends Animal {
+    makeSound() {
+        return `Woof`;
+    }
+}
+class Cat extends Animal {
+    makeSound() {
+        return `Meow`;
+    }
+}
+const Dog1 = new Dog("Canis");
+console.log(Dog1.getSpecies);
+const Cat1 = new Cat("Felis");
+console.log(Cat1.getSpecies);
 //# sourceMappingURL=index.js.map

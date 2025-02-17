@@ -247,16 +247,50 @@ studentOne.addGrade(53);
 console.log(studentOne.showGrades);
 
 // ***************** 9 *****************
-// Create a type Response that can be either { success: true, data: string } or {
-//   success: false, error: string }. Then, write a function handleResponse that takes
-//   an argument of type Response and logs Data received: {data}; if success is
-//   true, and logs;Error occurred: {error}; if success is false. Use type guards to
-//   differentiate between the two cases.
 type response =
   | { success: true; data: string }
   | { success: false; error: string };
-function handleResponse(obj: response): response {
-  return obj;
+function handleResponse(obj: response): void {
+  if (obj.success) {
+    console.log(`Data Recieved`);
+  } else {
+    console.log(`Error getting data`);
+  }
 }
 
-console.log();
+handleResponse({ success: false, error: "Data Recieved" });
+
+// ***************** 10 *****************
+
+abstract class Animal {
+  protected species: string;
+  constructor(species: string) {
+    this.species = species;
+  }
+  abstract makeSound(): string;
+  get getSpecies() {
+    return this.species;
+  }
+}
+class Dog extends Animal {
+  makeSound(): string {
+    return `Woof`;
+  }
+}
+class Cat extends Animal {
+  makeSound(): string {
+    return `Meow`;
+  }
+}
+const Dog1 = new Dog("Canis");
+console.log(Dog1.getSpecies);
+
+const Cat1 = new Cat("Felis");
+console.log(Cat1.getSpecies);
+
+// ***************** 11 *****************
+// Create a generic function findIndex&lt;T&gt;(arr: T[], value: T): number that takes an
+// array of any type and a value to search for. The function should return the index
+// of the value if found; otherwise, return -1. Call this function with different types of
+// arrays (e.g., an array of numbers, an array of strings) and log the results..
+
