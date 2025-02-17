@@ -66,10 +66,10 @@ class BankAccount {
         return this.accountNumber;
     }
     addMoney(amount) {
-        return this.balance += amount;
+        return (this.balance += amount);
     }
     withDraw(amount) {
-        return this.balance -= amount;
+        return (this.balance -= amount);
     }
 }
 const myAcc = new BankAccount(10000, "salman12345");
@@ -79,4 +79,75 @@ myAcc.withDraw(2000);
 console.log(myAcc.checkBalance);
 myAcc.addMoney(4000);
 console.log(myAcc.checkBalance);
+class shape {
+    constructor(color) {
+        this.color = color;
+    }
+    get getColor() {
+        return this.color;
+    }
+}
+class circle extends shape {
+    constructor(color, radius) {
+        super(color);
+        this.radius = radius;
+    }
+    calculateArea() {
+        return this.radius * this.radius * 3.17;
+    }
+}
+const myCircle = new circle("red", 15);
+console.log(`Area: ${myCircle.calculateArea()}`);
+class Rectangle extends shape {
+    constructor(color, width, height) {
+        super(color);
+        this.width = width;
+        this.height = height;
+    }
+    calculateArea() {
+        return this.width * this.height;
+    }
+}
+const myReactangle = new Rectangle("orange", 10, 15);
+console.log(`Area: ${myReactangle.calculateArea()}`);
+function createProduct(obj) {
+    return obj;
+}
+const myProduct = {
+    id: 3,
+    name: "Bat",
+    price: 1000,
+    category: "Sports",
+};
+console.log(createProduct(myProduct));
+class Employee {
+    constructor(name, salary) {
+        (this.name = name), (this.salary = salary);
+    }
+    get getDetails() {
+        return `Name:${this.name} Salary:${this.salary}`;
+    }
+}
+class Developer extends Employee {
+    constructor(name, salary, pL) {
+        super(name, salary);
+        this.programmingLanguage = pL;
+    }
+    get getDetails() {
+        return `Name:${this.name}, Salary:${this.salary}, ProgrammingLanguage${this.programmingLanguage}`;
+    }
+}
+const Developer1 = new Developer("Salman", 900000, "Javascript");
+console.log(Developer1.getDetails);
+class Designer extends Employee {
+    constructor(name, salary, toolUsed) {
+        super(name, salary);
+        this.toolUsed = toolUsed;
+    }
+    get getDetails() {
+        return `Name:${this.name}, Salary:${this.salary}, toolUsed:${this.toolUsed}`;
+    }
+}
+const Designer1 = new Designer("Ali", 200000, "Adobe");
+console.log(Designer1.getDetails);
 //# sourceMappingURL=index.js.map

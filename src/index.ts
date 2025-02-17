@@ -90,11 +90,11 @@ class BankAccount {
   get checkAccountNo() {
     return this.accountNumber;
   }
-   addMoney(amount: number) {
-    return this.balance += amount;
+  addMoney(amount: number) {
+    return (this.balance += amount);
   }
-   withDraw(amount: number) {
-    return this.balance -= amount;
+  withDraw(amount: number) {
+    return (this.balance -= amount);
   }
 }
 const myAcc = new BankAccount(10000, "salman12345");
@@ -102,9 +102,104 @@ console.log(myAcc.checkBalance);
 console.log(myAcc.checkAccountNo);
 myAcc.withDraw(2000);
 console.log(myAcc.checkBalance);
-myAcc.addMoney(4000)
+myAcc.addMoney(4000);
 console.log(myAcc.checkBalance);
 // console.log(myAcc.accountNumber);
 
 // ***************** 5 *****************
 
+abstract class shape {
+  protected color: string;
+  constructor(color: string) {
+    this.color = color;
+  }
+  abstract calculateArea(): void;
+  get getColor() {
+    return this.color;
+  }
+}
+
+class circle extends shape {
+  radius: number;
+  constructor(color: string, radius: number) {
+    super(color);
+    this.radius = radius;
+  }
+  calculateArea(): number {
+    return this.radius * this.radius * 3.17;
+  }
+}
+const myCircle = new circle("red", 15);
+console.log(`Area: ${myCircle.calculateArea()}`);
+
+class Rectangle extends shape {
+  width: number;
+  height: number;
+  constructor(color: string, width: number, height: number) {
+    super(color);
+    this.width = width;
+    this.height = height;
+  }
+  calculateArea(): number {
+    return this.width * this.height;
+  }
+}
+const myReactangle = new Rectangle("orange", 10, 15);
+console.log(`Area: ${myReactangle.calculateArea()}`);
+
+// ***************** 6 *****************
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+}
+function createProduct(obj: Product): Product {
+  return obj;
+}
+const myProduct: Product = {
+  id: 3,
+  name: "Bat",
+  price: 1000,
+  category: "Sports",
+};
+console.log(createProduct(myProduct));
+
+// ***************** 7 *****************
+
+class Employee {
+  name: string;
+  salary: number;
+  constructor(name: string, salary: number) {
+    (this.name = name), (this.salary = salary);
+  }
+  get getDetails(): string {
+    return `Name:${this.name} Salary:${this.salary}`;
+  }
+}
+class Developer extends Employee {
+  programmingLanguage: string;
+  constructor(name: string, salary: number, pL: string) {
+    super(name, salary);
+    this.programmingLanguage = pL;
+  }
+  get getDetails() {
+    return `Name:${this.name}, Salary:${this.salary}, ProgrammingLanguage${this.programmingLanguage}`;
+  }
+}
+const Developer1 = new Developer("Salman", 900000, "Javascript");
+console.log(Developer1.getDetails);
+
+class Designer extends Employee {
+  toolUsed: string;
+  constructor(name: string, salary: number, toolUsed: string) {
+    super(name, salary);
+    this.toolUsed = toolUsed;
+  }
+  get getDetails() {
+    return `Name:${this.name}, Salary:${this.salary}, toolUsed:${this.toolUsed}`;
+  }
+}
+const Designer1 = new Designer("Ali", 200000, "Adobe");
+console.log(Designer1.getDetails);
