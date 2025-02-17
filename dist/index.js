@@ -134,7 +134,7 @@ class Developer extends Employee {
         this.programmingLanguage = pL;
     }
     get getDetails() {
-        return `Name:${this.name}, Salary:${this.salary}, ProgrammingLanguage${this.programmingLanguage}`;
+        return `Name:${this.name}, Salary:${this.salary}, ProgrammingLanguage:${this.programmingLanguage}`;
     }
 }
 const Developer1 = new Developer("Salman", 900000, "Javascript");
@@ -150,4 +150,34 @@ class Designer extends Employee {
 }
 const Designer1 = new Designer("Ali", 200000, "Adobe");
 console.log(Designer1.getDetails);
+class student {
+    constructor(name, grades, school, studentId) {
+        this.name = name;
+        this.grades = grades;
+        this.school = school;
+        this.studentId = studentId;
+    }
+    get showGrades() {
+        return this.grades;
+    }
+    addGrade(grade) {
+        return this.grades.push(grade);
+    }
+    avgGrade() {
+        if (this.grades.length === 0) {
+            return 0;
+        }
+        const sum = this.grades.reduce((acc, num) => {
+            return acc + num;
+        }, 0);
+        return sum / this.grades.length;
+    }
+}
+const studentOne = new student("Salman", [10, 20, 30, 40], "Govt", 101);
+console.log(studentOne.avgGrade());
+studentOne.addGrade(10);
+console.log(studentOne.avgGrade());
+console.log(studentOne.showGrades);
+studentOne.addGrade(53);
+console.log(studentOne.showGrades);
 //# sourceMappingURL=index.js.map

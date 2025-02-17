@@ -185,7 +185,7 @@ class Developer extends Employee {
     this.programmingLanguage = pL;
   }
   get getDetails() {
-    return `Name:${this.name}, Salary:${this.salary}, ProgrammingLanguage${this.programmingLanguage}`;
+    return `Name:${this.name}, Salary:${this.salary}, ProgrammingLanguage:${this.programmingLanguage}`;
   }
 }
 const Developer1 = new Developer("Salman", 900000, "Javascript");
@@ -203,3 +203,60 @@ class Designer extends Employee {
 }
 const Designer1 = new Designer("Ali", 200000, "Adobe");
 console.log(Designer1.getDetails);
+
+// ***************** 8 *****************
+class student {
+  public name: string;
+  private grades: number[];
+  protected school: string;
+  readonly studentId: number;
+  constructor(
+    name: string,
+    grades: number[],
+    school: string,
+    studentId: number
+  ) {
+    this.name = name;
+    this.grades = grades;
+    this.school = school;
+    this.studentId = studentId;
+  }
+  get showGrades() {
+    return this.grades;
+  }
+  addGrade(grade: number) {
+    return this.grades.push(grade);
+  }
+  avgGrade() {
+    if (this.grades.length === 0) {
+      return 0;
+    }
+    const sum = this.grades.reduce((acc, num) => {
+      return acc + num;
+    }, 0);
+
+    return sum / this.grades.length;
+  }
+}
+const studentOne = new student("Salman", [10, 20, 30, 40], "Govt", 101);
+console.log(studentOne.avgGrade());
+studentOne.addGrade(10);
+console.log(studentOne.avgGrade());
+console.log(studentOne.showGrades);
+studentOne.addGrade(53);
+console.log(studentOne.showGrades);
+
+// ***************** 9 *****************
+// Create a type Response that can be either { success: true, data: string } or {
+//   success: false, error: string }. Then, write a function handleResponse that takes
+//   an argument of type Response and logs Data received: {data}; if success is
+//   true, and logs;Error occurred: {error}; if success is false. Use type guards to
+//   differentiate between the two cases.
+type response =
+  | { success: true; data: string }
+  | { success: false; error: string };
+function handleResponse(obj: response): response {
+  return obj;
+}
+
+console.log();
