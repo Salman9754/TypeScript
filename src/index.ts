@@ -284,13 +284,124 @@ class Cat extends Animal {
 }
 const Dog1 = new Dog("Canis");
 console.log(Dog1.getSpecies);
+console.log(Dog1.makeSound());
 
 const Cat1 = new Cat("Felis");
 console.log(Cat1.getSpecies);
+console.log(Cat1.makeSound());
 
 // ***************** 11 *****************
-// Create a generic function findIndex&lt;T&gt;(arr: T[], value: T): number that takes an
-// array of any type and a value to search for. The function should return the index
-// of the value if found; otherwise, return -1. Call this function with different types of
-// arrays (e.g., an array of numbers, an array of strings) and log the results..
 
+function findIndex<T>(arr: T[], value: T): number {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === value) {
+      return i;
+    }
+  }
+  return 0;
+}
+console.log(findIndex([1, 2, 3, 4], 2));
+console.log(findIndex(["apple", "banana", "pear"], "pear"));
+
+// ***************** 12 *****************
+
+interface Car {
+  drive(): string;
+}
+interface Bike {
+  ride(): string;
+}
+function useVehicle(item: Car | Bike): string {
+  if ("drive" in item) {
+    return item.drive();
+  } else {
+    return item.ride();
+  }
+}
+class Tesla implements Car {
+  drive(): string {
+    return `Car is driving`;
+  }
+}
+
+class Honda implements Bike {
+  ride(): string {
+    return `Bike is riding`;
+  }
+}
+const TeslaCar = new Tesla();
+const HondaBike = new Honda();
+console.log(useVehicle(TeslaCar));
+console.log(useVehicle(HondaBike));
+
+// ***************** 12 *****************
+
+interface Person {
+  name: string;
+  age: number;
+}
+interface employeeInterface {
+  jobTitle: string;
+}
+
+type FullTimeEmployee = Person & employeeInterface;
+function describeEmployee(emp: FullTimeEmployee): string {
+  return `Name:${emp.name}, Age:${emp.age}, Job Title:${emp.jobTitle}`;
+}
+const employee1: FullTimeEmployee = {
+  name: "Salman",
+  age: 20,
+  jobTitle: "Developer",
+};
+console.log(describeEmployee(employee1));
+
+// ***************** 13 *****************
+
+interface Dogy {
+  bark(): string;
+}
+interface Caty {
+  meow(): string;
+}
+type Pet = Dogy | Caty;
+function makeSound(pet: Pet) {
+  if ("bark" in pet) {
+    return pet.bark();
+  } else {
+    return pet.meow();
+  }
+}
+const Dog2: Dogy = {
+  bark() {
+    return `Woof!`;
+  },
+};
+const Cat2: Caty = {
+  meow() {
+    return `Meow!`;
+  },
+};
+console.log(makeSound(Dog2));
+console.log(makeSound(Cat2));
+
+// ***************** 15 *****************
+
+interface Shape {
+  calculateArea(): number;
+  get Type(): string;
+}
+class Circle implements Shape {
+  radius: number;
+  constructor(radius: number) {
+    this.radius = radius;
+  }
+  calculateArea(): number {
+    return this.radius * this.radius * 3.17;
+  }
+  get Type(): string {
+    return `Circle`;
+  }
+}
+const newCircle = new Circle(10);
+console.log(`Radius: ${newCircle.calculateArea()}`);
+console.log(`Type: ${newCircle.Type}`);

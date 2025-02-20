@@ -209,6 +209,83 @@ class Cat extends Animal {
 }
 const Dog1 = new Dog("Canis");
 console.log(Dog1.getSpecies);
+console.log(Dog1.makeSound());
 const Cat1 = new Cat("Felis");
 console.log(Cat1.getSpecies);
+console.log(Cat1.makeSound());
+function findIndex(arr, value) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === value) {
+            return i;
+        }
+    }
+    return 0;
+}
+console.log(findIndex([1, 2, 3, 4], 2));
+console.log(findIndex(["apple", "banana", "pear"], "pear"));
+function useVehicle(item) {
+    if ("drive" in item) {
+        return item.drive();
+    }
+    else {
+        return item.ride();
+    }
+}
+class Tesla {
+    drive() {
+        return `Car is driving`;
+    }
+}
+class Honda {
+    ride() {
+        return `Bike is riding`;
+    }
+}
+const TeslaCar = new Tesla();
+const HondaBike = new Honda();
+console.log(useVehicle(TeslaCar));
+console.log(useVehicle(HondaBike));
+function describeEmployee(emp) {
+    return `Name:${emp.name}, Age:${emp.age}, Job Title:${emp.jobTitle}`;
+}
+const employee1 = {
+    name: "Salman",
+    age: 20,
+    jobTitle: "Developer",
+};
+console.log(describeEmployee(employee1));
+function makeSound(pet) {
+    if ("bark" in pet) {
+        return pet.bark();
+    }
+    else {
+        return pet.meow();
+    }
+}
+const Dog2 = {
+    bark() {
+        return `Woof!`;
+    },
+};
+const Cat2 = {
+    meow() {
+        return `Meow!`;
+    },
+};
+console.log(makeSound(Dog2));
+console.log(makeSound(Cat2));
+class Circle {
+    constructor(radius) {
+        this.radius = radius;
+    }
+    calculateArea() {
+        return this.radius * this.radius * 3.17;
+    }
+    get Type() {
+        return `Circle`;
+    }
+}
+const newCircle = new Circle(10);
+console.log(`Radius: ${newCircle.calculateArea()}`);
+console.log(`Type: ${newCircle.Type}`);
 //# sourceMappingURL=index.js.map
